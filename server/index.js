@@ -5,13 +5,14 @@ const PORT = process.env.PORT || 5000;
 const cors = require('cors')
 const EmployeeModel = require('./models/employee')
 const AdminModel = require('./models/admin')
+const dotenv = require('dotenv').config()
 
 
 app.use(express.static('public'));
 
 app.use(express.json());
 app.use(cors());
-mongoose.connect("mongodb+srv://saikumar123:saikumar123@cluster0.xpmsb7m.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect(process.env.MONGODB_URI)
   .then(response => {
     console.log("Database Connected Successfully")
     console.log("MongoDB is running...")
